@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <title>상세 페이지</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        function order() {
+            
+            let name = $('#name').val();
+            if (name == '') {
+                alert("성함을 입력해주세요");
+                $("#name").focus();
+                return false;
+            }
+
+            let quantity = $('#quantity').val();
+            if (quantity == '') {
+                alert("수량을 선택해주세요");
+                $("#quantity").focus();
+                return false;
+            }
+
+            let address = $('#address').val();
+            if (address == '') {
+                alert("주소를 입력해주세요");
+                $("#address").focus();
+                return false;
+            }
+
+            let mobile = $('#mobile').val();
+            if (mobile.indexOf('-') < 0) {
+                alert("010-0000-0000 형식으로 입력해주세요");
+                $("#mobile").focus();
+                return false;
+            }
+            else {
+                alert ("주문이 처리되었습니다.");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="img">
+            <img src=http://item.ssgcdn.com/36/23/64/item/1000033642336_i1_600.jpg>
+        </div>
+        <br>
+        <p></p>
+        <h3><strong>[딥티크]오 드 뚜왈렛 롬브르 단 로 100ml</strong></h3>
+        <p></p>
+        <h5>가격: 175,000원 </h5>
+        <p></p>
+        딥티크의 대표적인 플로럴 향수를 각각의 향의 스토리를 표현한 꽃 정물화가 담긴 리미티드 패키지로
+        만나볼 수 있는 오 드 뚜왈렛 컬렉션입니다. 사진 예술가이자 디지털 플로럴 아티스트 바스 뮤스와의
+        협업으로 탄생한 꽃 정물화는 17세기 플랑드르 회화 기법을 적용한 디지털 정물화 예술 작품으로서의
+        가치를 인정 받고 있습니다. 각 향수의 디저털 정물화 배경 컬러를 보틀 옆면에 입힌 것이 특징입니다.
+        <p></p>
+        <br>
+
+        <h4>주문하기</h4>
+        <p></p>
+        <div class="form-order">
+
+            <div class="form-group row">
+                <label for="inputname" class="col-sm-2 col-form-label">주문자 성함</label>
+                <div class="col-sm-10">
+                    <input id="name" class="form-control" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputname" class="col-sm-2 col-form-label">수량</label>
+                <div class="col-sm-10">
+                    <select class="custom-select mr-sm-2" id="quantity" required>
+                        <option value="">수량을 선택하세요.</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputaddress" class="col-sm-2 col-form-label">주소</label>
+                <div class="col-sm-10">
+                    <input id="address" class="form-control" placeholder="" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputmobile" class="col-sm-2 col-form-label">전화번호</label>
+                <div class="col-sm-10">
+                    <input id="mobile" class="form-control" placeholder="" required>
+                </div>
+            </div>
+            <p></p>
+
+            <div class="order-btn">
+                <button onclick="order()" type="button" class="btn btn-dark"><strong>주문하기</strong></button>
+            </div>
+
+        </div>
+</body>
+
+</html>
