@@ -1,51 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <title>상세 페이지</title>
-    
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
     <script>
-        function make_order() {
+        function make_orders() {
 
             let name_give = $('#name').val();
             let quantity_give = $('#quantity').val();
             let address_give = $('#address').val();
             let mobile_give = $('#mobile').val();
 
-
             if (name_give == '') {
                 alert("성함을 입력해주세요");
                 $("#name").focus();
                 return;
-            }
-
-            else if (quantity_give == '') {
-                alert("수량을 선택해주세요");
+            } else if (quantity_give == '') {
+                alert("수량을 선택해주세요"); 
                 $("#quantity").focus();
                 return;
-            }
-
-            else if (address_give == '') {
+            } else if (address_give == '') {
                 alert("주소를 입력해주세요");
                 $("#address").focus();
                 return;
-            }
-
-            else if (mobile_give.indexOf('-') < 0) {
+            } else if (mobile_give.indexOf('-') < 0) {
                 alert("010-0000-0000 형식으로 입력해주세요");
                 $("#mobile").focus();
                 return;
             }
-            let data_give = {
+        
+        let data_give = {
                 'name_give':name_give,
                 'quantity_give':quantity_give,
                 'address_give':address_give,
@@ -68,7 +57,7 @@
                     }
                 }
             })
-        }
+        
 
         $(document).ready(function () {
             $('#orders-box').html('');
@@ -103,6 +92,7 @@
                                 </tr>';
             $('#orders-box').append(temp_html);
         }
+      }  
     </script>
 </head>
 
@@ -170,25 +160,34 @@
             <p></p>
 
             <div class="order-btn">
-                <button onclick="order()" type="button" class="btn btn-dark"><strong>주문하기</strong></button>
-            </div>
-            <p></p>
-            <div class ="orders">
-                <table class ="table">
-                    <thead>
-                        <tr>
-                            <th class="meta_info" scope="col">성함</th>
-                            <th class="meta_info" scope="col">수량</th>
-                            <th class="meta_info" scope="col">주소</th>
-                            <th class="meta_info" scope="col">전화번호</th>
-                        </tr>
-                    </thead>
-                    <tbody id="orders-box"></tbody>
-                </table>
-            
+                <button onclick="make_orders()" type="button" class="btn btn-dark"><strong>주문하기</strong></button>
             </div>
 
         </div>
+</body>
+<p></p>
+<div class="orders">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="meta_info" scope="col">성함</th>
+                <th class="meta_info" scope="col">수량</th>
+                <th class="meta_info" scope="col">주소</th>
+                <th class="meta_info" scope="col">전화번호</th>
+            </tr>
+        </thead>
+        <tbody id="orders-box">
+            <tr>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>@mdo</td>
+                <td>@mdo</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
 </body>
 
 </html>
