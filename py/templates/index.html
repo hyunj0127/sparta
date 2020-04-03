@@ -11,53 +11,52 @@
     <script>
         function make_orders() {
 
-            let name_give = $('#name').val();
-            let quantity_give = $('#quantity').val();
-            let address_give = $('#address').val();
-            let mobile_give = $('#mobile').val();
+            let name = $('#name').val();
+            let quantity = $('#quantity').val();
+            let address = $('#address').val();
+            let mobile = $('#mobile').val();
 
-            if (name_give == '') {
+            if (name == '') {
                 alert("성함을 입력해주세요");
                 $("#name").focus();
                 return;
-            } else if (quantity_give == '') {
+            } else if (quantity == '') {
                 alert("수량을 선택해주세요"); 
                 $("#quantity").focus();
                 return;
-            } else if (address_give == '') {
+            } else if (address == '') {
                 alert("주소를 입력해주세요");
                 $("#address").focus();
                 return;
-            } else if (mobile_give.indexOf('-') < 0) {
+            } else if (mobile.indexOf('-') < 0) {
                 alert("010-0000-0000 형식으로 입력해주세요");
                 $("#mobile").focus();
                 return;
             }
         
         let data_give = {
-                'name_give':name_give,
-                'quantity_give':quantity_give,
-                'address_give':address_give,
-                'mobile_give':mobile_give
-
+                'name_give':name,
+                'quantity_give':quantity,
+                'address_give':address,
+                'mobile_give':mobile
             }
 
             $.ajax({
                 type: "POST",
-                url: "/ordsers",
+                url: "/orders",
                 data: data_give,
                 success: function (response) {
                     if (response['result'] == 'success') {
                         alert(response['msg']);
-                      ///  $('#name').val('');
-                      ///  $('#quantity').val('');
-                      ///  $('#address').val('');
-                      ///  $('#mobile').val('');
+                        $('#name').val('');
+                        $('#quantity').val('');
+                        $('#address').val('');
+                        $('#mobile').val('');
                         window.location.reload();
                     }
                 }
             })
-        
+        }
 
         $(document).ready(function () {
             $('#orders-box').html('');
@@ -67,13 +66,19 @@
         function listing() {
             $.ajax({
                 type: "GET",
-                url: "/ordsers",
+                url: "/orders",
                 data: {},
                 success: function (response) {
                     if (response['result'] == 'success') {
-                        let reviews = response['orders'];
+                        let orders= response['orders'];
                         for (let i = 0; i < orders.length; i++) {
-                            make_card(orders[i]['name'], orders[i]['quantity'], orders[i]['address'], orders[i]['mobile'])
+                           /// let order = orders[i];
+                           /// let name = order['name'];
+                           /// let quantity= order['quantity'];
+                           /// let address = order['address'];
+                           /// let mobile = order['mobile'];
+
+                            make_card(orders[i]['name'], orders[i]['quantity'], orders[i]['address'], orders[i]['mobile']);
                         }
                     } 
                     else {
@@ -92,7 +97,7 @@
                                 </tr>';
             $('#orders-box').append(temp_html);
         }
-      }  
+        
     </script>
 </head>
 
